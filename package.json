@@ -1,8 +1,8 @@
 {
-  "name": "Nukool",
+  "name": "nukool",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://benawad.com/Nukool",
+  "homepage": "https://benawad.com/nukool",
   "devDependencies": {
     "gh-pages": "^0.12.0",
     "react-scripts": "0.8.4"

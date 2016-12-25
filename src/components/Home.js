@@ -8,26 +8,16 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.redditStateKey = "redditState";
-
-    const { state, code } = this.props.location.query;
-    if (state !== undefined && code !== undefined) {
-      if (state === localStorage.getItem(this.redditStateKey, "")) {
-        const { subject, message, users } = localStorage;
-        if (subject !== undefined && message !== undefined && users !== undefined) {
-          this.props.sendMessages(subject, message, JSON.parse(users), 'yummy ramen', code);
-        }
-      }
-    } 
+    const redditStateKey = 'redditState';
 
     this.subjectKey = "subject";
     this.messageKey = "message";
     this.usersKey = "users";
 
     const redditState = this.createState();
-    localStorage.setItem(this.redditStateKey, redditState);
+    localStorage.setItem(redditStateKey, redditState);
 
-    const redirectUri = "http://benawad.com/nukool";
+    const redirectUri = "http://benawad.com/nukool/%23/webhook";
     const url = `https://www.reddit.com/api/v1/authorize?scope=identity,privatemessages&response_type=code&redirect_uri=${redirectUri}&client_id=-Q-lrceF3GNtHw&state=${redditState}&duration=permanent`
 
     this.state = {

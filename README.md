@@ -1,3 +1,3 @@
-# Reddit Group Private Messages
+# Nukool
 
 Allows you to private message multiple Reddit users at once.

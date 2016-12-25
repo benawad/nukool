@@ -66,7 +66,7 @@ class Home extends Component {
     const message = this.state.message.trim();
 
     let users = this.state.users.split('\n');
-    const cleanUsers = [];
+    let cleanUsers = [];
     let cleanUser = '';
     for (let i = 0; i < users.length; i++) {
       cleanUser = users[i].trim();
@@ -74,6 +74,9 @@ class Home extends Component {
         cleanUsers.push(cleanUser) ;
       }
     }
+
+    let uniqueUsers = new Set(cleanUsers); 
+    cleanUsers = [...uniqueUsers];
 
     const subjectEmpty = subject === '';
     const messageEmpty = message === '';

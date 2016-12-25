@@ -27,8 +27,8 @@ class Home extends Component {
     const redditState = this.createState();
     localStorage.setItem(this.redditStateKey, redditState);
 
-    const base = window.location.origin;
-    const url = `https://www.reddit.com/api/v1/authorize?scope=identity,privatemessages&response_type=code&redirect_uri=${base}&client_id=-Q-lrceF3GNtHw&state=${redditState}&duration=permanent`
+    const redirectUri = "http://benawad.com/nukool";
+    const url = `https://www.reddit.com/api/v1/authorize?scope=identity,privatemessages&response_type=code&redirect_uri=${redirectUri}&client_id=-Q-lrceF3GNtHw&state=${redditState}&duration=permanent`
 
     this.state = {
       subject: '',

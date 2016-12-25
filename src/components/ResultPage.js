@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Icon, Table } from 'semantic-ui-react'
+import { Container, Icon, Table } from 'semantic-ui-react'
+import Title from './Title';
 
 
 class ResultPage extends Component {
@@ -19,18 +20,21 @@ class ResultPage extends Component {
 
   render() {
     return (
-      <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>User</Table.HeaderCell>
-            <Table.HeaderCell>Status</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <Container text>
+        <Title/>
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>User</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
 
-        <Table.Body>
-          {this.props.messageSuccess.map(this.tableRow)}
-        </Table.Body>
-      </Table>
+          <Table.Body>
+            {this.props.messageSuccess.map(this.tableRow)}
+          </Table.Body>
+        </Table>
+      </Container>
     );
   }
 }

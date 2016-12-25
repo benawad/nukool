@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Form, Message } from 'semantic-ui-react'
+import { Container, Button, Form, Message } from 'semantic-ui-react'
+import Title from './Title';
 
 
 class Home extends Component {
@@ -134,8 +135,15 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        {this.messageForm()}
+      <div className="outer">
+        <div className="middle">
+          <div className="inner">
+            <Container text>
+              <Title />
+              {this.messageForm()}
+            </Container>
+          </div>
+        </div>
       </div>
     );
   }

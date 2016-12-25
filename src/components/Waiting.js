@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { Loader } from 'semantic-ui-react';
+import { Container, Loader } from 'semantic-ui-react';
+import Title from './Title';
 
 
 class Waiting extends Component {
   render() {
     return (
-       <Loader active/>
+      <Container text>
+        <Title/>
+        <Loader active/>
+      </Container>
     );
   }
 }

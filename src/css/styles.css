@@ -1,0 +1,34 @@
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%
+}
+
+body {
+    background: #f2f2f2!important;
+}
+
+/*input, textarea {*/
+    /*background: #!important;*/
+/*}*/
+
+button {
+    background: #1485CC!important;
+    color: #FFF !important;
+}
+
+/*label, .huge {*/
+    /*color: #193441 !important*/
+/*}*/

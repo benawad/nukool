@@ -20,15 +20,12 @@ body {
     background: #f2f2f2!important;
 }
 
-/*input, textarea {*/
-    /*background: #!important;*/
-/*}*/
-
 button {
     background: #1485CC!important;
     color: #FFF !important;
 }
 
-/*label, .huge {*/
-    /*color: #193441 !important*/
-/*}*/
+iframe {
+    display: block;
+    margin: auto;
+}

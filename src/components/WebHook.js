@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 
 class WebHook extends Component {
@@ -22,7 +22,7 @@ class WebHook extends Component {
     } 
     
     if (!success) {
-      hashHistory.push('/');
+      browserHistory.push('/');
     }
 
   }

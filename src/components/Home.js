@@ -17,7 +17,7 @@ class Home extends Component {
     const redditState = this.createState();
     localStorage.setItem(redditStateKey, redditState);
 
-    const redirectUri = "http://benawad.com/nukool/%23/webhook";
+    const redirectUri = "http://benawad.com/nukool/webhook";
     const url = `https://www.reddit.com/api/v1/authorize?scope=identity,privatemessages&response_type=code&redirect_uri=${redirectUri}&client_id=-Q-lrceF3GNtHw&state=${redditState}&duration=permanent`
 
     this.state = {

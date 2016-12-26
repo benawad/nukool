@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga';
 import { fork, call, put } from 'redux-saga/effects';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import request from 'superagent';
 
 function sendMessages(payload) {
@@ -14,10 +14,10 @@ function sendMessages(payload) {
 }
 
 function* callSendMessages(action) {
-  hashHistory.push('/wait');
+  browserHistory.push('/wait');
   const result = yield call(sendMessages, action);
   yield put({type: 'SEND_MESSAGES_DONE', result});
-  hashHistory.push('/result');
+  browserHistory.push('/result');
 }
 
 function* sendMessagesSaga() {

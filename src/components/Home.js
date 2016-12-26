@@ -20,6 +20,10 @@ class Home extends Component {
 
     const redditStateKey = 'redditState';
 
+    console.log('yo');
+    console.log(window.location);
+    console.log('sup');
+
     if (window.location.search) {
       const state = this.getParameterByName('state');
       const code = this.getParameterByName('code');
@@ -155,7 +159,7 @@ class Home extends Component {
 
   githubStarButton() {
     return (
-      <a className="github-button center" href="https://github.com/benawad/nukool" data-icon="octicon-star" data-style="mega" data-count-href="/benawad/nukool/stargazers" data-count-api="/repos/benawad/nukool#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star benawad/nukool on GitHub">Star</a>
+      <a className="github-button center" href="https://github.com/benawad/nukool/%23" data-icon="octicon-star" data-style="mega" data-count-href="/benawad/nukool/stargazers" data-count-api="/repos/benawad/nukool#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star benawad/nukool on GitHub">Star</a>
     );
   }
 

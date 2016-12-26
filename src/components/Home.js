@@ -87,8 +87,8 @@ getParameterByName(name) {
       }
     }
 
-    let uniqueUsers = new Set(cleanUsers); 
-    cleanUsers = [...uniqueUsers];
+    //let uniqueUsers = new Set(cleanUsers); 
+    //cleanUsers = [...uniqueUsers];
 
     const subjectEmpty = subject === '';
     const messageEmpty = message === '';

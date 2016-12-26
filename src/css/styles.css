@@ -20,11 +20,6 @@ body {
     background: #f2f2f2!important;
 }
 
-button {
-    background: #1485CC!important;
-    color: #FFF !important;
-}
-
 iframe {
     display: block;
     margin: auto;

@@ -5,7 +5,7 @@ const Title = () => (
   <Header size="huge" textAlign="center">
     Nukool
     <Header.Subheader>
-      Private message up to 10 Reddit users at once
+      Private message up to 10 Reddit users at once.
     </Header.Subheader>
   </Header>
 )

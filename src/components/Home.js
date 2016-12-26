@@ -4,8 +4,7 @@ import Title from './Title';
 
 
 class Home extends Component {
-
-  getParameterByName(name) {
+getParameterByName(name) {
     const url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
     const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -148,15 +147,9 @@ class Home extends Component {
       </Form.Field>
       <Form.TextArea error={this.state.messageEmpty} name='message' label='Message' onChange={(e) => this.setState({message: e.target.value, messageEmpty: e.target.value.trim() === ''})} value={this.state.message} />
       <Form.TextArea error={this.state.usersOver10 || this.state.noUsers} name='users' placeholder='Add one user per line' label='Users (up to 10)' onChange={(e) => this.setState({users: e.target.value, noUsers: e.target.value.trim() === ''})} value={this.state.users} />
-      <Button fluid={true} type='submit'>Send</Button>
+      <Button primary fluid type='submit'>Send</Button>
     </Form>
     )
-  }
-
-  githubStarButton() {
-    return (
-      <a className="github-button center" href="https://github.com/benawad/nukool" data-icon="octicon-star" data-style="mega" data-count-href="/benawad/nukool/stargazers" data-count-api="/repos/benawad/nukool#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star benawad/nukool on GitHub">Star</a>
-    );
   }
 
   render() {
@@ -167,7 +160,6 @@ class Home extends Component {
             <div className="inner">
               <Container text>
                 <Title />
-                {this.githubStarButton()}
                 {this.messageForm()}
               </Container>
             </div>

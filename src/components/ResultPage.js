@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Icon, Table } from 'semantic-ui-react'
+import { Button, Container, Icon, Table } from 'semantic-ui-react'
 import Title from './Title';
+import { hashHistory } from 'react-router';
 
 
 class ResultPage extends Component {
@@ -34,6 +35,7 @@ class ResultPage extends Component {
             {this.props.messageSuccess.map(this.tableRow)}
           </Table.Body>
         </Table>
+        <Button primary fluid onClick={() => hashHistory.push('/')}>Send another message</Button>
       </Container>
     );
   }

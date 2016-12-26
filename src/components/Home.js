@@ -1,14 +1,37 @@
 import React, { Component } from 'react';
-import { Container, Button, Form, Message } from 'semantic-ui-react'
+import { Container, Button, Form, Message } from 'semantic-ui-react' 
 import Title from './Title';
 
 
 class Home extends Component {
 
+  getParameterByName(name) {
+    const url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
   constructor(props) {
     super(props);
 
     const redditStateKey = 'redditState';
+
+    if (window.location.search) {
+      const state = this.getParameterByName('state');
+      const code = this.getParameterByName('code');
+      if (state && code) {
+        if (state === localStorage.getItem(redditStateKey, "")) {
+          const { subject, message, users } = localStorage;
+          if (subject !== undefined && message !== undefined && users !== undefined) {
+            this.props.sendMessages(subject, message, JSON.parse(users), 'yummy ramen', code);
+          }
+        }
+      }
+    }
 
     this.subjectKey = "subject";
     this.messageKey = "message";
@@ -17,7 +40,7 @@ class Home extends Component {
     const redditState = this.createState();
     localStorage.setItem(redditStateKey, redditState);
 
-    const redirectUri = "http://benawad.com/nukool/webhook";
+    const redirectUri = "http://benawad.com/nukool";
     const url = `https://www.reddit.com/api/v1/authorize?scope=identity,privatemessages&response_type=code&redirect_uri=${redirectUri}&client_id=-Q-lrceF3GNtHw&state=${redditState}&duration=permanent`
 
     this.state = {

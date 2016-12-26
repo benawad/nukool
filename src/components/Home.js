@@ -27,7 +27,6 @@ class Home extends Component {
         if (state === localStorage.getItem(redditStateKey, "")) {
           const { subject, message, users } = localStorage;
           if (subject !== undefined && message !== undefined && users !== undefined) {
-            window.location.search = "";
             this.props.sendMessages(subject, message, JSON.parse(users), 'yummy ramen', code);
           }
         }

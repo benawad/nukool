@@ -179,9 +179,21 @@ getParameterByName(name) {
   messageSuccess() {
     const { messageSuccess } = this.state;
     if (messageSuccess === 1) {
-      return (<h1>good</h1>);
+      return (
+        <Message
+          success
+          header='Authentication successful!'
+          content='Your message will be sent shortly'
+        />
+      );
     } else if (messageSuccess === 0) {
-      return (<h1>bad</h1>);
+      return (
+        <Message
+          negative
+          header='Authentication failed!'
+          content='Something went wrong :( try again.'
+        />
+      );
     } else {
       return false;
     }

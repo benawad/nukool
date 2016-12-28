@@ -10,14 +10,11 @@ export function homeUpdate(state = {
 }, action) {
   switch (action.type) {
     case 'SEND_MESSAGES_DONE':
-      console.log('done');
-      console.log(action.success);
       return {
         ...state,
         messageSuccess: action.success
       }
     case 'HOME_UPDATE':
-      console.log(action.update);
       return {
         ...state,
         ...action.update

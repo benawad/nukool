@@ -15,17 +15,13 @@ function sendMessages(payload) {
 function* callSendMessages(action) {
   try{
     const result = yield call(sendMessages, action);
-    console.log(typeof(result));
     const body = JSON.parse(result);
     if (body.authorization === 'successful') {
-      console.log("1");
       yield put({type: 'SEND_MESSAGES_DONE', success: 1});
     } else {
-      console.log("2");
       yield put({type: 'SEND_MESSAGES_DONE', success: 0});
     }
    } catch (e) {
-      console.log("3");
     yield put({type: 'SEND_MESSAGES_DONE', success: 0});
    }
 }

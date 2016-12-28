@@ -50,11 +50,16 @@ getParameterByName(name) {
       messageEmpty: false,
       usersOver10: false,
       noUsers: false,
+      messageSuccess: this.props.messageSuccess,
       url
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.errorContent = this.errorContent.bind(this);
+    this.subjectChange = this.subjectChange.bind(this);
+    this.messageChange = this.messageChange.bind(this);
+    this.usersChange = this.usersChange.bind(this);
+    this.messageSuccess = this.messageSuccess.bind(this);
   }
 
   createState() {
@@ -87,8 +92,8 @@ getParameterByName(name) {
       }
     }
 
-    //let uniqueUsers = new Set(cleanUsers); 
-    //cleanUsers = [...uniqueUsers];
+    let uniqueUsers = new Set(cleanUsers); 
+    cleanUsers = [...uniqueUsers];
 
     const subjectEmpty = subject === '';
     const messageEmpty = message === '';
@@ -100,7 +105,8 @@ getParameterByName(name) {
         subjectEmpty,
         messageEmpty,
         usersOver10,
-        noUsers
+        noUsers,
+        messageSuccess: 2
       });
     } else {
       localStorage.setItem(this.subjectKey, this.state.subject);
@@ -129,6 +135,24 @@ getParameterByName(name) {
     return errorMessages.join(' | ');
   }
 
+  subjectChange(e) {
+    const subjectEmpty = e.target.value.trim() === '';
+    const messageSuccess = subjectEmpty ? 2 : this.state.messageSuccess; 
+    this.setState({subject: e.target.value, subjectEmpty, messageSuccess})
+  }
+
+  messageChange(e) {
+    const messageEmpty = e.target.value.trim() === '';
+    const messageSuccess = messageEmpty ? 2 : this.state.messageSuccess; 
+    this.setState({message: e.target.value, messageEmpty, messageSuccess});
+  }
+
+  usersChange(e) {
+    const noUsers = e.target.value.trim() === '';
+    const messageSuccess = noUsers ? 2 : this.state.messageSuccess; 
+    this.setState({users: e.target.value, noUsers, messageSuccess});
+  }
+
   messageForm() {
     return (
     <Form onSubmit={this.handleSubmit} error={this.state.subjectEmpty || this.state.messageEmpty || this.state.usersOver10 || this.state.noUsers}>
@@ -142,14 +166,25 @@ getParameterByName(name) {
         <input 
           maxLength="99"
           name='subject' 
-          onChange={(e) => this.setState({subject: e.target.value, subjectEmpty: e.target.value.trim() === ''})} 
+          onChange={this.subjectChange} 
           value={this.state.subject}/>
       </Form.Field>
-      <Form.TextArea error={this.state.messageEmpty} name='message' label='Message' onChange={(e) => this.setState({message: e.target.value, messageEmpty: e.target.value.trim() === ''})} value={this.state.message} />
-      <Form.TextArea error={this.state.usersOver10 || this.state.noUsers} name='users' placeholder='Add one user per line' label='Users (up to 10)' onChange={(e) => this.setState({users: e.target.value, noUsers: e.target.value.trim() === ''})} value={this.state.users} />
+      <Form.TextArea error={this.state.messageEmpty} name='message' label='Message' onChange={this.messageChange} value={this.state.message} />
+      <Form.TextArea error={this.state.usersOver10 || this.state.noUsers} name='users' placeholder='Add one user per line' label='Users (up to 10)' onChange={this.usersChange} value={this.state.users} />
       <Button primary fluid type='submit'>Send</Button>
     </Form>
     )
+  }
+
+  messageSuccess() {
+    const { messageSuccess } = this.state;
+    if (messageSuccess === 1) {
+      return (<h1>good</h1>);
+    } else if (messageSuccess === 0) {
+      return (<h1>bad</h1>);
+    } else {
+      return false;
+    }
   }
 
   render() {
@@ -160,6 +195,7 @@ getParameterByName(name) {
             <div className="inner">
               <Container text>
                 <Title />
+                {this.messageSuccess()}
                 {this.messageForm()}
               </Container>
             </div>

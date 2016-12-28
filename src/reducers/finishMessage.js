@@ -1,7 +1,7 @@
-export function addResults(state = [], action) {
+export function messageSuccess(state = 2, action) {
   switch (action.type) {
     case 'SEND_MESSAGES_DONE':
-      return JSON.parse(action.result);
+      return action.success;
       
     default:
       return state;
@@ -9,4 +9,4 @@ export function addResults(state = [], action) {
 }
 
 
-export default addResults;
+export default messageSuccess;

@@ -6,7 +6,7 @@ import Main from './Main';
 
 function mapStateToProps(state) {
   return {
-    messageSuccess: state.messageSuccess
+    homeState: state.homeState
   }
 }
 

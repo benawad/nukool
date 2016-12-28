@@ -8,3 +8,10 @@ export function sendMessages(subject, message, users, key, code) {
     code
   }
 }
+
+export function updateHome(update) {
+  return {
+    type: 'HOME_UPDATE',
+    update
+  }
+}

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import messageSuccess from './finishMessage';
+import homeUpdate from './home';
 
 const rootReducer = combineReducers({
-  messageSuccess,
+  homeState: homeUpdate,
   routing: routerReducer
 });
 
